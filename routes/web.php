@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AttributeValueController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BitController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MachineController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -71,3 +74,28 @@ Route::controller(CategoryController::class)
             });
     });
 
+Route::controller(AttributeValueController::class)
+    ->name('attributes.')
+    ->prefix('/attributes')
+    ->group(function (){
+        Route::get('/create', 'create')->name('create');
+        Route::post('', 'store')->name('store');
+    });
+
+Route::controller(MachineController::class)
+    ->middleware('auth')
+    ->name('machines.')
+    ->prefix('/machines')
+    ->group(function (){
+        Route::get('/create', 'create')->name('create');
+        Route::post('', 'store')->name('store');
+    });
+
+Route::controller(BitController::class)
+    ->middleware('auth')
+    ->name('bits.')
+    ->prefix('/bits')
+    ->group(function (){
+        Route::get('/create', 'create')->name('create');
+        Route::post('', 'store')->name('store');
+    });

@@ -17,51 +17,55 @@ class AttributeValueSeeder extends Seeder
     public function run()
     {
         $objs = [
-            ['name' => 'bas_diameter', 'values' =>[
+            ['name' => 'Head diameter', 'values' =>[
                 ['name' => '100mm'],
                 ['name' => '115mm'],
                 ['name' => '120mm'],
                 ['name' => '125mm'],
                 ['name' => '130mm'],
             ]],
-            ['name' => 'working_area', 'values' =>[
+            ['name' => 'Working area', 'values' =>[
                 ['name' => '1300x2500'],
                 ['name' => '2000x4000'],
             ]],
-            ['name' => 'bottom_diameter', 'values' =>[
+            ['name' => 'Working area bit', 'values' =>[
+                ['name' => '750mm'],
+                ['name' => '900mm'],
+            ]],
+            ['name' => 'Bottom diameter', 'values' =>[
                 ['name' => '60mm'],
                 ['name' => '110mm'],
                 ['name' => '115mm'],
                 ['name' => '120mm'],
                 ['name' => '125mm'],
             ]],
-            ['name' => 'bottom_zone', 'values' =>[
+            ['name' => 'Bottom zone', 'values' =>[
                 ['name' => '75mm'],
                 ['name' => '100mm'],
                 ['name' => '115mm'],
                 ['name' => '120mm'],
                 ['name' => '125mm'],
             ]],
-            ['name' => 'motor', 'values' =>[
+            ['name' => 'Motor', 'values' =>[
                 ['name' => '3.5kw'],
                 ['name' => '6kw'],
                 ['name' => '9kw'],
             ]],
-            ['name' => 'weight', 'values' =>[
+            ['name' => 'Weight', 'values' =>[
                 ['name' => '900kg'],
                 ['name' => '1000kg'],
                 ['name' => '1250kg'],
                 ['name' => '1350kg'],
                 ['name' => '1500kg'],
             ]],
-            ['name' => 'max.working_speed', 'values' =>[
+            ['name' => 'max.Working speed', 'values' =>[
                 ['name' => '5000/min'],
                 ['name' => '5500/min'],
                 ['name' => '6000/min'],
                 ['name' => '6500/min'],
                 ['name' => '7000/min'],
             ]],
-            ['name' => 'max.traveling_speed', 'values' =>[
+            ['name' => 'max.Traveling speed', 'values' =>[
                 ['name' => '2000/min'],
                 ['name' => '2500/min'],
                 ['name' => '3000/min'],

@@ -8,10 +8,22 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/splide.min.css') }}">
+    <link rel="stylesheet" href="{{asset('css/font.css')}}">
 </head>
 <body class="bg-light">
 @include('app.nav')
-@yield('content')
+<div class="container-xl">
+    <div class="row">
+        @auth
+        @include('app.sidebar')
+        @endauth
+        <div class="col">
+            @yield('content')
+        </div>
+    </div>
+</div>
+
+{{--<script type="text/javascript" src="{{asset('js/font.js')}}"></script>--}}
 <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/splide.min.js') }}"></script>
 </body>

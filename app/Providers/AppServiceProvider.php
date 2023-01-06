@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
@@ -31,11 +32,15 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(!app()->isProduction());
 
         View::composer('app.nav', function ($view){
+            $products = Product::orderBy('id', 'desc')
+                ->get();
+
            $categories = Category::orderBy('id')
                ->get();
 
            $view->with([
               'categories' => $categories,
+               'products' => $products,
            ]);
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -18,13 +19,27 @@ class CategoryController extends Controller
         }
     }
 
+    public static function getCategoryId($category){
+        if ($category->parent_id == 0){
+            return $category->id;
+        }else{
+            $parent = Category::find($category->parent_id);
+
+            return CategoryController::getCategoryTree($parent);
+        }
+    }
+
     public function index(){
+        $products = Product::orderBy('id')
+            ->get();
+
         $categories = Category::orderBy('id')
             ->get();
 
         return view('home.index')
             ->with([
-                'categories' => $categories
+                'categories' => $categories,
+                'products' => $products,
             ]);
     }
 
@@ -41,7 +56,7 @@ class CategoryController extends Controller
     public function store(Request $request){
         $request->validate([
             'name' => 'required|string|max:255',
-            'parent_id' => 'required|string|max:255',
+            'parent_id' => 'required|integer|min:1  ',
         ]);
 
         $obj = new Category();

@@ -10,24 +10,25 @@
                     Haryt doretmek
                 </div>
 
-                <form action="{{ route('products.store') }}" method="post">
+                <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
-                        <label for="category" class="form-label fw-semibold">
+                        <label for="category_id" class="form-label fw-semibold">
                             Haýsy Kategorya
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-select @error('category') is-invalid @enderror" name="category" id="category" required autofocus>
+                        <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id" required autofocus>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ \App\Http\Controllers\CategoryController::getCategoryTree($category, $category->name) }}</option>
                             @endforeach
                         </select>
-                        @error('category')
+                        @error('category_id')
                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
 
+                    {{--Name--}}
                     <div class="mb-3">
                         <label for="name" class="form-label fw-semibold">
                             <span class="text-danger">TM</span> name
@@ -35,6 +36,38 @@
                         </label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"  value="{{ old('name') }}" required autofocus>
                         @error('name')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="barcode" class="form-label fw-semibold">
+                            <span class="text-danger">Barcode</span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control @error('barcode') is-invalid @enderror" name="barcode" id="barcode"  value="{{ old('barcode') }}" required autofocus>
+                        @error('barcode')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-semibold">
+                            <span class="text-danger">Description</span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description"  value="{{ old('description') }}" required autofocus>
+                        @error('description')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label fw-semibold">
+                            Surat gosmak
+                        </label>
+                        <input type="file" accept="image/jpeg" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
+                        @error('image')
                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>

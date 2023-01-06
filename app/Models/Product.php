@@ -16,6 +16,38 @@ class Product extends Model
     }
 
     public function values(){
-        return $this->hasMany(AttributeValue::class);
+        return $this->belongsToMany(AttributeValue::class, 'product_attribute_value');
+    }
+
+    public function working_area_id(){
+        return $this->belongsTo(AttributeValue::class, 'working_area_id');
+    }
+
+    public function motor_id(){
+        return $this->belongsTo(AttributeValue::class, 'motor_id');
+    }
+
+    public function weight_id(){
+        return $this->belongsTo(AttributeValue::class, 'weight_id');
+    }
+
+    public function maxWorking_speed_id(){
+        return $this->belongsTo(AttributeValue::class, 'maxWorking_speed_id');
+    }
+
+    public function maxTraveling_speed_id(){
+        return $this->belongsTo(AttributeValue::class, 'maxTraveling_speed_id');
+    }
+
+    public function head_diameter_id(){
+        return $this->belongsTo(AttributeValue::class, 'head_diameter_id');
+    }
+
+    public function bottom_diameter_id(){
+        return $this->belongsTo(AttributeValue::class, 'bottom_diameter_id');
+    }
+
+    public function bottom_zone_id(){
+        return $this->belongsTo(AttributeValue::class, 'bottom_zone_id');
     }
 }
