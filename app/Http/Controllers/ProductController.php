@@ -38,7 +38,6 @@ class ProductController extends Controller
         $obj->name = $request->name;
         $obj->barcode = $request->barcode;
         $obj->category_id = $request->category_id;
-        $obj->image = $request->image;
         $obj->description = $request->description;
         $obj->head_diameter_id = null;
         $obj->working_area_bit_id = null;
