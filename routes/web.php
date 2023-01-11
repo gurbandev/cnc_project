@@ -7,6 +7,7 @@ use App\Http\Controllers\BitController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MachineController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +40,17 @@ Route::controller(AuthenticatedSessionController::class)
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')->name('logout');
 
-Route::get('/', [CategoryController::class, 'index'])->name('home');
+
+// Pages
+Route::controller(PageController::class)
+    ->group(function (){
+        Route::get('/', 'index')->name('home');
+        Route::get('/contact', 'contact')->name('contact');
+        Route::get('/about', 'about')->name('about');
+    });
+
+
+//Route::get('/', [CategoryController::class, 'index'])->name('home');
 
 
 Route::controller(ProductController::class)
@@ -66,9 +77,10 @@ Route::controller(CategoryController::class)
         Route::middleware('auth')
             ->prefix('/auth')
             ->group(function (){
+                Route::get('/index', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');
                 Route::post('', 'store')->name('store');
-                Route::get('/edit/{id}', 'edit')->name('edit')->where('id', '[0-9]+');
+                Route::get('/{id}/edit', 'edit')->name('edit')->where('id', '[0-9]+');
                 Route::put('/{id}', 'update')->name('update')->where('id', '[0-9]+');
                 Route::delete('/{id}', 'delete')->name('delete')->where('id', '[0-9]+');
             });
@@ -89,6 +101,8 @@ Route::controller(MachineController::class)
     ->group(function (){
         Route::get('/create', 'create')->name('create');
         Route::post('', 'store')->name('store');
+        Route::get('/{id}/edit', 'edit')->name('edit')->where('id', '[0-9]+');
+        Route::put('/{id}', 'update')->name('update')->where('id', '[0-9]+');
     });
 
 Route::controller(BitController::class)
@@ -98,4 +112,6 @@ Route::controller(BitController::class)
     ->group(function (){
         Route::get('/create', 'create')->name('create');
         Route::post('', 'store')->name('store');
+        Route::get('/{id}/edit', 'edit')->name('edit')->where('id', '[0-9]+');
+        Route::put('/{id}', 'update')->name('update')->where('id', '[0-9]+');
     });

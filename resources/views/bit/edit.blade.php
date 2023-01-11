@@ -6,9 +6,9 @@
 
     <div class="row justify-content-center">
         <div class="text-center px-5 mt-5 col-6">
-            <h3>Pycak gosmak</h3>
+            <h3 class="text-capitalize">pycak edit</h3>
             <hr>
-            <form action="{{ route('bits.update') }}" method="post">
+            <form action="{{ route('bits.update', $obj->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -128,10 +128,18 @@
                         <span class="text-danger">Description</span>
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description"  value="{{ $obj->description }}" required autofocus>
-                    @error('description')
-                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                    @enderror
+                    <input type="text" class="form-control " name="description" id="description"  value="{{ $obj->description }}" autofocus>
+                </div>
+
+                <div>
+                    <img src="{{$obj->image ? Storage::url('products/sm/' . $obj->image) : Storage::url('not_found/not_found.png')}}"
+                         class="img-fluid" alt="">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label fw-semibold">
+                        Surat gosmak
+                    </label>
+                    <input type="file" accept="image/jpeg" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
                 </div>
 
                 <button class="btn btn-primary w-100 mb-5" type="submit">

@@ -10,23 +10,9 @@
                     Categorya doretmek
                 </div>
 
-                <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('categories.update'), $obj->id }}" method="post" enctype="multipart/form-data">
                     @csrf
-
-                    <div class="mb-3">
-                        <label for="parent_id" class="form-label fw-semibold">
-                            Haýsysynyň içinde bolsun (haysysyna degisli)
-                            <span class="text-danger">*</span>
-                        </label>
-                        <select class="form-select @error('parent_id') is-invalid @enderror" name="parent_id" id="parent_id" required autofocus>
-                        @foreach($categories as $category)
-                                <option value="{{ $category->parent_id }}">{{ \App\Http\Controllers\CategoryController::getCategoryTree($category, $category->name) }}</option>
-                            @endforeach
-                        </select>
-                        @error('parent_id')
-                        <div class="alert alert-danger mt-2">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    @method('put')
 
                     <div class="mb-3">
                         <label for="name" class="form-label fw-semibold">
@@ -41,7 +27,7 @@
 
                     <div class="mb-3">
                         <label for="image" class="form-label fw-semibold">
-                            Surat gosmak
+                            Surat 
                         </label>
                         <input type="file" accept="image/jpeg" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
                         @error('image')

@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(!app()->isProduction());
 
         View::composer('app.nav', function ($view){
+
             $products = Product::orderBy('id', 'desc')
                 ->get();
 
@@ -42,6 +43,15 @@ class AppServiceProvider extends ServiceProvider
               'categories' => $categories,
                'products' => $products,
            ]);
+        });
+
+        View::composer('app.sidebar', function ($view){
+
+            $categories = Category::whereNull('parent_id')->get();
+
+            $view->with([
+                'categories' => $categories,
+            ]);
         });
     }
 }

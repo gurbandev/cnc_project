@@ -119,12 +119,8 @@
                 <div class="mb-3">
                     <label for="description" class="form-label fw-semibold">
                         <span class="text-danger">Description</span>
-                        <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description"  value="{{ old('description') }}" required autofocus>
-                    @error('description')
-                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                    @enderror
+                    <input type="text" class="form-control  is-invalid " name="description" id="description"  value="{{ old('description') }}" required autofocus>
                 </div>
 
                 <div class="mb-3">
@@ -132,9 +128,6 @@
                         Surat gosmak
                     </label>
                     <input type="file" accept="image/jpeg" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
-                    @error('image')
-                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                    @enderror
                 </div>
 
                 <button class="btn btn-primary w-100 mb-5" type="submit">

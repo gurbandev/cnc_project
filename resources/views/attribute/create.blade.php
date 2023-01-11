@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    @lang('app.category') - @lang('app.app-name')
+    Aýratynlyk Döretmek
 @endsection
 @section('content')
     <div class="container-xl py-4">
         <div class="row justify-content-center">
             <div class="col-10 col-sm-8 col-md-6 col-lg-4">
                 <div class="fs-4 fw-semibold text-center mb-3">
-                    Haryt doretmek
+                    Aýratynlyk Döretmek
                 </div>
 
                 <form action="{{ route('attributes.store') }}" method="POST">
@@ -30,10 +30,7 @@
 
                     {{--Name--}}
                     <div class="mb-3">
-                        <label for="name" class="form-label fw-semibold">
-                            <span class="text-danger">TM</span> name
-                            <span class="text-danger">*</span>
-                        </label>
+                        <label for="name" class="form-label fw-semibold">value<span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"  value="{{ old('name') }}" required autofocus>
                         @error('name')
                         <div class="alert alert-danger mt-2">{{ $message }}</div>

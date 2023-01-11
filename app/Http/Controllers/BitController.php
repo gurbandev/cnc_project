@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
-class ProductController extends Controller
+class BitController extends Controller
 {
-//    product create page
+
+//    create page
     public function create(){
         $categories = Category::orderBy('id')
             ->get();
@@ -19,7 +20,7 @@ class ProductController extends Controller
         $attributes = AttributeValue::orderBy('id')
             ->get();
 
-        return view('product.create')
+        return view('bit.create')
             ->with([
                 'categories' => $categories,
                 'attributes' => $attributes,
@@ -27,14 +28,19 @@ class ProductController extends Controller
     }
 
 
-//    product create
+//    store creating
     public function store(Request $request){
 
         $request->validate([
             'name' => 'required|string|max:255',
             'barcode' => 'nullable|string|max:255',
-            'description' => 'nullable|string|max:1000',
             'category_id' => 'required|integer|min:0',
+            'description' => 'nullable|string|max:1000',
+
+            'head_diameter_id' => 'nullable|integer|min:0',
+            'working_area_bit_id' => 'nullable|integer|min:0',
+            'bottom_diameter_id' => 'nullable|integer|min:0',
+            'bottom_zone_id' => 'nullable|integer|min:0',
         ]);
 
         $obj = new Product();
@@ -42,11 +48,11 @@ class ProductController extends Controller
         $obj->barcode = $request->barcode;
         $obj->category_id = $request->category_id;
         $obj->description = $request->description;
-        $obj->head_diameter_id = null;
-        $obj->working_area_bit_id = null;
-        $obj->working_area_id = null;
-        $obj->bottom_diameter_id = null;
-        $obj->bottom_zone_id = null;
+        $obj->head_diameter_id = $request->head_diameter_id;
+        $obj->working_area_bit_id = $request->working_area_bit_id;
+        $obj->working_area_id = $request->working_area_id;
+        $obj->bottom_diameter_id = $request->bottom_diameter_id;
+        $obj->bottom_zone_id = $request->bottom_zone_id;
         $obj->motor_id = null;
         $obj->weight_id = null;
         $obj->maxWorking_speed_id = null;
@@ -70,25 +76,15 @@ class ProductController extends Controller
             $obj->update();
         }
 
-        return redirect()->back()
-            ->with('success create product');
+        return redirect()->back();
     }
 
 
-//    product delete
-    public function delete($id){
-        $product = Product::findOrFail($id);
-
-        $product->delete();
-
-        return redirect()->back()
-            ->with('success delete product');
-    }
-
-
+//    edit page
     public function edit($id){
-        $obj = Product::findOrFail($id)
-            ->get();
+        $obj = Product::findOrFail($id);
+
+//        return $obj;
 
         $categories = Category::orderBy('id')
             ->get();
@@ -96,37 +92,40 @@ class ProductController extends Controller
         $attributes = AttributeValue::orderBy('id')
             ->get();
 
-        return view('product.create')
+        return view('bit.edit')
             ->with([
                 'obj' => $obj,
                 'categories' => $categories,
                 'attributes' => $attributes,
             ]);
-
     }
 
 
-
-//    product update
+//    edit updating
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'barcode' => 'nullable|string|max:255',
-            'description' => 'nullable|string|max:1000',
             'category_id' => 'required|integer|min:0',
+            'description' => 'nullable|string|max:1000',
+
+            'head_diameter_id' => 'nullable|integer|min:0',
+            'working_area_bit_id' => 'nullable|integer|min:0',
+            'bottom_diameter_id' => 'nullable|integer|min:0',
+            'bottom_zone_id' => 'nullable|integer|min:0',
         ]);
 
-        $obj = Product::findOrFail($id)->get();
+        $obj = Product::findOrFail($id);
         $obj->name = $request->name;
         $obj->barcode = $request->barcode;
         $obj->category_id = $request->category_id;
         $obj->description = $request->description;
-        $obj->head_diameter_id = null;
-        $obj->working_area_bit_id = null;
-        $obj->working_area_id = null;
-        $obj->bottom_diameter_id = null;
-        $obj->bottom_zone_id = null;
+        $obj->head_diameter_id = $request->head_diameter_id;
+        $obj->working_area_bit_id = $request->working_area_bit_id;
+        $obj->working_area_id = $request->working_area_id;
+        $obj->bottom_diameter_id = $request->bottom_diameter_id;
+        $obj->bottom_zone_id = $request->bottom_zone_id;
         $obj->motor_id = null;
         $obj->weight_id = null;
         $obj->maxWorking_speed_id = null;
@@ -154,6 +153,7 @@ class ProductController extends Controller
             $obj->update();
 
             return redirect()->back();
+
         }
     }
 }

@@ -57,9 +57,6 @@
                             <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description"  value="{{ old('description') }}" required autofocus>
-                        @error('description')
-                        <div class="alert alert-danger mt-2">{{ $message }}</div>
-                        @enderror
                     </div>
 
                     <div class="mb-3">
