@@ -10,7 +10,7 @@
                     Categorya doretmek
                 </div>
 
-                <form action="{{ route('categories.store') }}" method="post">
+                <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
@@ -35,6 +35,16 @@
                         </label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"  value="{{ old('name') }}" required autofocus>
                         @error('name')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label fw-semibold">
+                            Surat gosmak
+                        </label>
+                        <input type="file" accept="image/jpeg" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
+                        @error('image')
                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>

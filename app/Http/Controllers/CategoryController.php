@@ -8,42 +8,40 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public static function getCategoryTree($category, $name){
-        if ($category->parent_id == 0){
-            return $name;
-        }else{
-         $parent = Category::find($category->parent_id);
-         $name = $parent->name . ' > ' . $name;
 
-         return CategoryController::getCategoryTree($parent, $name);
-        }
-    }
-
-    public static function getCategoryId($category){
-        if ($category->parent_id == 0){
-            return $category->id;
-        }else{
-            $parent = Category::find($category->parent_id);
-
-            return CategoryController::getCategoryTree($parent);
-        }
-    }
-
-    public function index(){
-        $products = Product::orderBy('id')
-            ->get();
-
+    public function index()
+    {
         $categories = Category::orderBy('id')
             ->get();
 
-        return view('home.index')
+        return view('category.index')
             ->with([
                 'categories' => $categories,
+            ]);
+    }
+
+
+    public function show($id)
+    {
+        $category = Category::where('id', $id)
+            ->get();
+
+        $category = $category[0];
+
+        $products = Product::where('category_id', $id)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('category.show')
+            ->with([
+                'category' => $category,
                 'products' => $products,
             ]);
     }
 
-    public function create(){
+
+    public function create()
+    {
         $categories = Category::orderBy('id')
             ->get();
 
@@ -53,10 +51,11 @@ class CategoryController extends Controller
             ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
-            'parent_id' => 'required|integer|min:1  ',
+            'parent_id' => 'required|integer|min:1',
         ]);
 
         $obj = new Category();
@@ -64,6 +63,110 @@ class CategoryController extends Controller
         $obj->parent_id = $request->parent_id;
         $obj->save();
 
-        return redirect()->route('home');
+        if ($request->has('image')) {
+            // generate name
+            $name = str()->random(15) . '.jpg';
+            // save normal
+            Storage::putFileAs('public/categories', $request->image, $name);
+            // save small
+            $imageSm = Image::make($request->image);
+            $imageSm->resize(200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imageSm = (string)$imageSm->encode('jpg', 90);
+            Storage::put('public/categories/sm/' . $name, $imageSm);
+            // update obj
+            $obj->image = $name;
+            $obj->update();
+        }
+
+        return redirect()->back()
+            ->with('success create product');
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'parent_id' => 'required|integer|min:1',
+        ]);
+
+        $obj = Category::findOrFail($id);
+        $obj->name = $request->name;
+        $obj->parent_id = $request->parent_id;
+        $obj->update();
+
+        if ($request->has('image')) {
+            if ($obj->image) {
+                Storage::delete('public/categories/' . $obj->image);
+                Storage::delete('public/categories/sm/' . $obj->image);
+            }
+            // generate name
+            $name = str()->random(15) . '.jpg';
+            // save normal
+            Storage::putFileAs('public/categories', $request->image, $name);
+            // save small
+            $imageSm = Image::make($request->image);
+            $imageSm->resize(200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imageSm = (string)$imageSm->encode('jpg', 90);
+            Storage::put('public/categories/sm/' . $name, $imageSm);
+            // update obj
+            $obj->image = $name;
+            $obj->update();
+            return redirect()->route('home');
+        }
+    }
+
+
+//    static function
+    public static function getSubcategory($category)
+    {
+        if (Category::where('parent_id', $category->id)) {
+            $subcategory = Category::where('parent_id', $category->id)
+                ->get();
+
+            return $subcategory;
+        } else {
+            return false;
+        }
+    }
+
+
+    public static function getCategoryTree($category, $name)
+    {
+        if ($category->parent_id == 0) {
+            return $name;
+        } else {
+            $parent = Category::find($category->parent_id);
+            $name = $parent->name . ' / ' . $name;
+
+            return CategoryController::getCategoryTree($parent, $name);
+        }
+    }
+
+    public static function getCategoryId($category_id)
+    {
+        $category = Category::find($category_id);
+
+        $category = $category[0];
+        return $category;
+
+        if ($category->parent_id == 0) {
+            return $category->id;
+        } else {
+            $parent = Category::find($category->parent_id);
+            return CategoryController::getCategoryId($parent);
+        }
+    }
+
+    public static function getProductCount($category_id)
+    {
+        $products = Product::where('category_id', $category_id)
+            ->get();
+
+        return count($products);
     }
 }

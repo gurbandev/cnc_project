@@ -18,7 +18,7 @@
                     </label>
                     <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id" required autofocus>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ \App\Http\Controllers\CategoryController::getCategoryTree($category, $category->name) }}</option>
+                            <option value="{{ $category->id }}" {{$category->name == 'pycaklar'?'selected':''}}>{{ \App\Http\Controllers\CategoryController::getCategoryTree($category, $category->name) }}</option>
                         @endforeach
                     </select>
                     @error('category_id')
@@ -26,83 +26,85 @@
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label for="head_diameter_id" class="form-label fw-semibold">
-                        A
-                        <span class="text-danger">*</span>
-                    </label>
-                    <select class="form-select @error('head_diameter_id') is-invalid @enderror" name="head_diameter_id"
-                            id="head_diameter_id" required autofocus>
-                        <option value="{{null}}" select='selected'>Yok</option>
-                        @foreach($attributes as $attribute)
-                            @if($attribute->attribute_id == 1)
-                                <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                    @error('head_diameter_id')
-                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                    @enderror
-                </div>
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="head_diameter_id" class="form-label fw-semibold">
+                            A
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select @error('head_diameter_id') is-invalid @enderror" name="head_diameter_id"
+                                id="head_diameter_id" required autofocus>
+                            <option value="{{null}}" select='selected'>Yok</option>
+                            @foreach($attributes as $attribute)
+                                @if($attribute->attribute_id == 1)
+                                    <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        @error('head_diameter_id')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
 
 
-                <div class="mb-3">
-                    <label for="working_area_bit_id" class="form-label fw-semibold">
-                        B
-                        <span class="text-danger">*</span>
-                    </label>
-                    <select class="form-select @error('working_area_bit_id') is-invalid @enderror" name="working_area_bit_id"
-                            id="working_area_bit_id" required autofocus>
-                        <option value="{{null}}" select='selected'>Yok</option>
-                        @foreach($attributes as $attribute)
-                            @if($attribute->attribute_id == 3)
-                                <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                    @error('working_area_bit_id')
-                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                    @enderror
-                </div>
+                    <div class="mb-3 col-6">
+                        <label for="working_area_bit_id" class="form-label fw-semibold">
+                            B
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select @error('working_area_bit_id') is-invalid @enderror" name="working_area_bit_id"
+                                id="working_area_bit_id" required autofocus>
+                            <option value="{{null}}" select='selected'>Yok</option>
+                            @foreach($attributes as $attribute)
+                                @if($attribute->attribute_id == 3)
+                                    <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        @error('working_area_bit_id')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
 
 
-                <div class="mb-3">
-                    <label for="bottom_diameter_id" class="form-label fw-semibold">
-                        C
-                        <span class="text-danger">*</span>
-                    </label>
-                    <select class="form-select @error('bottom_diameter_id') is-invalid @enderror" name="bottom_diameter_id"
-                            id="bottom_diameter_id" required autofocus>
-                        <option value="{{null}}" select='selected'>Yok</option>
-                        @foreach($attributes as $attribute)
-                            @if($attribute->attribute_id == 3)
-                                <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                    @error('bottom_diameter_id')
-                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                    @enderror
-                </div>
+                    <div class="mb-3 col-6">
+                        <label for="bottom_diameter_id" class="form-label fw-semibold">
+                            C
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select @error('bottom_diameter_id') is-invalid @enderror" name="bottom_diameter_id"
+                                id="bottom_diameter_id" required autofocus>
+                            <option value="{{null}}" select='selected'>Yok</option>
+                            @foreach($attributes as $attribute)
+                                @if($attribute->attribute_id == 3)
+                                    <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        @error('bottom_diameter_id')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
 
 
-                <div class="mb-3">
-                    <label for="bottom_zone_id" class="form-label fw-semibold">
-                        D
-                        <span class="text-danger">*</span>
-                    </label>
-                    <select class="form-select @error('bottom_zone_id') is-invalid @enderror" name="bottom_zone_id"
-                            id="bottom_zone_id" required autofocus>
-                        <option value="{{null}}" select='selected'>Yok</option>
-                        @foreach($attributes as $attribute)
-                            @if($attribute->attribute_id == 4)
-                                <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                    @error('bottom_zone_id')
-                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                    @enderror
+                    <div class="mb-3 col-6">
+                        <label for="bottom_zone_id" class="form-label fw-semibold">
+                            D
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select @error('bottom_zone_id') is-invalid @enderror" name="bottom_zone_id"
+                                id="bottom_zone_id" required autofocus>
+                            <option value="{{null}}" select='selected'>Yok</option>
+                            @foreach($attributes as $attribute)
+                                @if($attribute->attribute_id == 4)
+                                    <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        @error('bottom_zone_id')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="mb-3">
@@ -129,13 +131,9 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label fw-semibold">
-                        <span class="text-danger">Description</span>
-                        <span class="text-danger">*</span>
+                        <span>Description</span>
                     </label>
-                    <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description"  value="{{ old('description') }}" required autofocus>
-                    @error('description')
-                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                    @enderror
+                    <input type="text" class="form-control " name="description" id="description"  value="{{ old('description') }}"  autofocus>
                 </div>
 
                 <div class="mb-3">
@@ -152,6 +150,12 @@
                     Save
                 </button>
             </form>
+        </div>
+        <div class="col-6 mt-5 px-5 py-5">
+            <div class="border">
+                <img class="img-fluid mx-auto d-block" src="{{asset('img/example/example.jpg')}}" alt="">
+                <h4 class="text-center mt-2">Meselem</h4>
+            </div>
         </div>
     </div>
 

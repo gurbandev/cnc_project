@@ -1,62 +1,75 @@
-<div class="col">
-    <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-        <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-            <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-            <span class="fs-5 fw-semibold">Collapsible</span>
-        </a>
-        <ul class="list-unstyled ps-0">
-            <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-                    Home
-                </button>
-                <div class="collapse" id="home-collapse" style="">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Overview</a></li>
-                        <li><a href="#" class="link-dark rounded">Updates</a></li>
-                        <li><a href="#" class="link-dark rounded">Reports</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                    Dashboard
-                </button>
-                <div class="collapse" id="dashboard-collapse" style="">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Overview</a></li>
-                        <li><a href="#" class="link-dark rounded">Weekly</a></li>
-                        <li><a href="#" class="link-dark rounded">Monthly</a></li>
-                        <li><a href="#" class="link-dark rounded">Annually</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                    Orders
-                </button>
-                <div class="collapse" id="orders-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">New</a></li>
-                        <li><a href="#" class="link-dark rounded">Processed</a></li>
-                        <li><a href="#" class="link-dark rounded">Shipped</a></li>
-                        <li><a href="#" class="link-dark rounded">Returned</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="border-top my-3"></li>
-            <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                    Account
-                </button>
-                <div class="collapse" id="account-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">New...</a></li>
-                        <li><a href="#" class="link-dark rounded">Profile</a></li>
-                        <li><a href="#" class="link-dark rounded">Settings</a></li>
-                        <li><a href="#" class="link-dark rounded">Sign out</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
+<div class="flex-shrink-0 p-3 bg-white text-capitalize ">
+    <h1 class="border-bottom pb-3 mb-3">Admin panel</h1>
+    <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+            <button class="btn btn-yellow d-inline-flex align-items-center rounded border-0 collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                <p class="fw-semibold mb-0">Category Show <i class="bi bi-caret-right-fill"></i></p>
+            </button>
+            <div class="collapse" id="home-collapse">
+                <ul class=" list-unstyled fw-normal pb-1 small">
+                    @foreach($categories as $category)
+                        @if(count(\App\Http\Controllers\CategoryController::getSubcategory($category)) == 0)
+                            <li class="mb-1 ms-3"><a class="btn border-0 btn-yellow" href="{{route('categories.show', $category->id)}}">{{$category->name}}</a>
+                            </li>
+                        @else
+                            <li class="mb-1 ms-3">
+                                <button class="btn border-0 btn-yellow align-items-center rounded collapsed mb-1"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#{{$category->name}}" aria-expanded="false">
+                                    <span class="text-capitalize fw-semibold">{{$category->name}}</span>
+                                    <i class="bi bi-caret-right-fill"></i>
+                                </button>
+                                <div class="collapse" id="{{$category->name}}" style="">
+                                    <ul class=" list-unstyled fw-normal pb-1 small">
+                                        @foreach(\App\Http\Controllers\CategoryController::getSubcategory($category) as $subcategory)
+                                            <li class="mb-1 ms-2">
+                                                <button class="btn border-0 btn-yellow align-items-center rounded collapsed"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#{{$subcategory->name}}" aria-expanded="false">
+                                                    <span class="text-capitalize fw-semibold">{{$subcategory->name}}</span>
+                                                    <i class="bi bi-caret-right-fill"></i>
+                                                </button>
+                                                <div class="collapse" id="{{$subcategory->name}}" style="">
+                                                    <ul class=" list-unstyled fw-normal pb-1 small">
+                                                        @foreach(\App\Http\Controllers\CategoryController::getSubcategory($subcategory) as $child)
+                                                            <li
+                                                                    class="ms-4"><a href="{{route('categories.show', $child->id)}}" class="btn btn-yellow border-0 py-0 my-1"><span class="text-capitalize">{{$child->name}}</span></a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                            </li>
+                            @endforeach
+                </ul>
+            </div>
+        </li>
+        <li class="mb-1">
+                <button class="btn btn-yellow d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#Product-create" aria-expanded="false">
+                <span class="fw-semibold mb-0">Create <i class="bi bi-caret-right-fill"></i></span>
+            </button>
+            <div class="collapse" id="Product-create" style="">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    @foreach($categories as $category)
+                        @if($category->id == 1)
+                        <li><a href="{{route('machines.create')}}" class="btn btn-yellow text-capitalize border-0 ">{{$category->name}}</a></li>
+                        @elseif($category->id == 2)
+                            <li><a href="{{route('bits.create')}}" class="btn btn-yellow text-capitalize border-0 ">{{$category->name}}</a></li>
+                        @else
+                            <li><a href="{{route('products.create')}}" class="btn btn-yellow text-capitalize border-0 ">{{$category->name}}</a></li>
+                        @endif
+                    @endforeach
+                        <li><a href="{{route('attributes.create')}}" class="btn btn-yellow text-capitalize border-0 ">Ayratynlyk</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <a href="{{route('categories.index')}}" class="btn btn-yellow border-0 fw-semibold">Category edit</a>
+        </li>
+    </ul>
 </div>

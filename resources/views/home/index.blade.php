@@ -3,35 +3,38 @@
     CNC
 @endsection
 @section('content')
-    <div class="row">
-        <div class="col">
-            @foreach($categories as $category)
-                full_name: {{\App\Http\Controllers\CategoryController::getCategoryTree($category, $category->name)}}
-                <br>
-                name: {{$category->name}}
-                <br>
-                id: {{$category->id}}
-                <br>
-                parent_id: {{$category->parent_id}}
-                <br>
-                <br>
-            @endforeach
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{asset('img/slider/ads1.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('img/slider/ads2.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('img/slider/ads3.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('img/slider/ads4.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('img/slider/ads5.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('img/slider/ads6.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('img/slider/ads7.jpg')}}" class="d-block w-100" alt="...">
+            </div>
         </div>
-        <div class="col">
-            @foreach($products as $product)
-                @if($product->image)
-                    <div class="card my-5" style="width: 18rem;">
-                        <img src="{{Storage::url('products/' . $product->image)}}" class="card-img-top img-fluid" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Product-name: {{$product->name}}</h5>
-                            <p class="card-text">Product-description: {{$product->description}}</p>
-                            <a href="{{route('products.show', $product->id)}}" class="btn btn-primary">Show</a>
-                        </div>
-                    </div>
-
-                @endif
-            @endforeach
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 @endsection
 

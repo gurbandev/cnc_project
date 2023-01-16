@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             UserSeeder::class,
         ]);
-        Product::factory()->count(200)->create();
+        for ($i=0; $i<10; $i++){
+            Product::factory()->count(200)->create();
+        }
     }
 }
