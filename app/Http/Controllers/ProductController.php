@@ -87,8 +87,8 @@ class ProductController extends Controller
 
 
     public function edit($id){
-        $obj = Product::findOrFail($id)
-            ->get();
+
+        $obj = Product::find($id);
 
         $categories = Category::orderBy('id')
             ->get();
@@ -96,7 +96,7 @@ class ProductController extends Controller
         $attributes = AttributeValue::orderBy('id')
             ->get();
 
-        return view('product.create')
+        return view('product.edit')
             ->with([
                 'obj' => $obj,
                 'categories' => $categories,

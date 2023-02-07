@@ -34,6 +34,7 @@ class CategorySeeder extends Seeder
             ['name' => 'zapjaslar', 'parent_id' =>[['name' => null, 'parent_id' => null]]],
             ['name' => 'gurlusuk harytlary', 'parent_id' =>[['name' => null, 'parent_id' => null]]],
             ['name' => 'beylekiler', 'parent_id' =>[['name' => null, 'parent_id' => null]]],
+            ['name' => 'ayna gurallar', 'parent_id' => [['name' => null, 'parent_id' => null]]],
         ];
 
         for ($i=0; $i<count($objs); $i++){

@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
 
     public function index()
     {
-        $categories = Category::orderBy('id')
+        $categories = Category::with('parent')
+            ->with('children')
             ->get();
+
 
         return view('category.index')
             ->with([
@@ -21,7 +25,7 @@ class CategoryController extends Controller
     }
 
 
-    public function show($id)
+    public function adminShow($id)
     {
         $category = Category::where('id', $id)
             ->get();
@@ -31,6 +35,26 @@ class CategoryController extends Controller
         $products = Product::where('category_id', $id)
             ->orderBy('id', 'desc')
             ->get();
+
+
+        return view('category.admin_show')
+            ->with([
+                'category' => $category,
+                'products' => $products,
+            ]);
+    }
+
+    public function show($id){
+
+        $category = Category::where('id', $id)
+            ->get();
+
+        $category = $category[0];
+
+        $products = Product::where('category_id', $id)
+            ->orderBy('id', 'desc')
+            ->get();
+
 
         return view('category.show')
             ->with([
@@ -85,6 +109,22 @@ class CategoryController extends Controller
     }
 
 
+    public function edit($id)
+    {
+        $old_category = Category::find($id);
+        $categories = Category::orderBy('id')
+            ->get();
+
+
+        return view('category.edit')
+            ->with([
+                'old_category' => $old_category,
+                'categories' => $categories,
+            ]);
+
+    }
+
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -120,6 +160,16 @@ class CategoryController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        $category = Category::findOrFail($id);
+
+        $category->delete();
+
+        return redirect()->back()
+            ->with('success', 'success delete product');
+    }
+
 
 //    static function
     public static function getSubcategory($category)
@@ -151,14 +201,14 @@ class CategoryController extends Controller
     {
         $category = Category::find($category_id);
 
-        $category = $category[0];
-        return $category;
+//        $category = $category[0];
+//            return $category->parent_id;
 
-        if ($category->parent_id == 0) {
+        if (!$category->parent_id) {
             return $category->id;
         } else {
             $parent = Category::find($category->parent_id);
-            return CategoryController::getCategoryId($parent);
+            return CategoryController::getCategoryId($parent->id);
         }
     }
 
@@ -169,4 +219,33 @@ class CategoryController extends Controller
 
         return count($products);
     }
+
+
+    public static function categoryList()
+    {
+        return Category::where('parent_id' == 0)->with('children')->get();
+    }
+
+    public static function findParent($parent, $name)
+    {
+
+        $parent = Category::where('id', $parent->id)
+            ->with('parent')
+            ->get();
+
+
+        $parent = $parent[0];
+
+        $name = $parent->name . ' / ' . $name;
+
+        if ($parent->parent){
+            $name = $parent->parent->name . ' / ' . $parent->name. ' / ';
+            return $name;
+        }else{
+            return $name;
+        }
+
+
+    }
+
 }

@@ -36,5 +36,23 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <div>
+        <div class="text-center row justify-content-center mt-5">
+            <h3 class="ff-bebas mb-0">OUR PRODUCTS</h3>
+            <p class="line col-3"><span class="line-p ff-poppins2">latest products</span></p>
+        </div>
+        <div class="row row-cols-sm-2 row-cols-md-3 justify-content-center">
+            @foreach($products as $product)
+                <div class="col">
+                    <div class="col-12">
+                        <img src="{{$product->image ? Storage::url('products/sm/' . $product->image) : Storage::url('not_found/not_found.png')}}"
+                             class="img-fluid mx-auto center" alt="">
+                    </div>
+                    <p>{{$product->name}}</p>
+                    <p>{{$product->barcode}}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
 

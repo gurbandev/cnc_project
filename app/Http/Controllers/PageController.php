@@ -9,11 +9,13 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index(){
-        $products = Product::orderBy('id')
+        $products = Product::orderBy('id', 'desc')
+            ->take(6)
             ->get();
 
         $categories = Category::orderBy('id')
             ->get();
+
 
         return view('home.index')
             ->with([

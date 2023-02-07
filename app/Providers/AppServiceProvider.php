@@ -47,7 +47,9 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('app.sidebar', function ($view){
 
-            $categories = Category::whereNull('parent_id')->get();
+            $categories = Category::whereNull('parent_id')
+                ->with('children.children')
+                ->get();
 
             $view->with([
                 'categories' => $categories,

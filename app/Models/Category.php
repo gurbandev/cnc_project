@@ -15,13 +15,15 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function sub_category()
+//    One to Many iverse -tersi
+    public function parent()
     {
-        return $this->belongsTo(self::class, 'parent_id', 'id');
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 
-    public function parent_category()
+//    One to Many
+    public function children()
     {
-        return $this->hasMany(self::class, 'id', 'parent_id');
+        return $this->hasMany(Category::class, 'parent_id' );
     }
 }

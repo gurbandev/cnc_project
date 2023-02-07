@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-10 col-sm-8 col-md-6 col-lg-4">
                 <div class="fs-4 fw-semibold text-center mb-3">
-                    Haryt doretmek
+                    Haryt duzeltmek
                 </div>
 
                 <form action="{{ route('products.update', $obj->id)}}" method="post" enctype="multipart/form-data">
@@ -77,4 +77,5 @@
             </div>
         </div>
     </div>
+
 @endsection

@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/splide.min.css') }}">
     <link rel="stylesheet" href="{{asset('css/font.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="bg-light">
 @include('app.nav')
 <div class="container-xl">
     <div class="row">
         @auth
-        <div class="col-sm-12 col-md-4 col-lg-3 px-0 bg-white shadow">
-            @include('app.sidebar')
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <div class=" px-0 bg-white shadow ">
+                @include('app.sidebar')
+            </div>
         </div>
         @endauth
         <div class="col">
