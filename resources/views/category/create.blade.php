@@ -13,13 +13,12 @@
                 <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="mb-3 text-center">
+                    <div class="mb-3">
                         <label for="parent_id" class="form-label fw-semibold">
-                            Haýsysynyň içinde bolsun
+                            Haýsysynyň içinde bolsun (haysysyna degisli)
                             <span class="text-danger">*</span>
                         </label>
                         <select class="form-select @error('parent_id') is-invalid @enderror" name="parent_id" id="parent_id" required autofocus>
-                            <option value="{{0}}" selected>-</option>
                         @foreach($categories as $category)
                                 <option value="{{ $category->parent_id }}">{{ \App\Http\Controllers\CategoryController::getCategoryTree($category, $category->name) }}</option>
                             @endforeach
@@ -29,7 +28,7 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3 text-center">
+                    <div class="mb-3">
                         <label for="name" class="form-label fw-semibold">
                             <span class="text-danger">TM</span> name
                             <span class="text-danger">*</span>
@@ -40,7 +39,7 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3 text-center">
+                    <div class="mb-3">
                         <label for="image" class="form-label fw-semibold">
                             Surat gosmak
                         </label>
