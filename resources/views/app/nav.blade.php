@@ -2,7 +2,7 @@
     <div class="container-lg">
         <div class="col-3 col-sm-2"><a class="navbar-brand" href="{{ route('home') }}"><x-logo/></a></div>
         <form class="d-flex ms-auto me-4 order-md-2 " role="search" action="{{route('filter')}}">
-            <input class="form-control me-2 bg-dark text-white" type="search" name="q" value="{{request()->get('q')}}" placeholder="Gözle" aria-label="Search">
+            <input class="form-control me-2 bg-dark text-white bg-icon" type="search" name="q" value="{{request()->get('q')}}" placeholder="Gözle" aria-label="Search">
         </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars"
                 aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">

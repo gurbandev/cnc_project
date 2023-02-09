@@ -120,7 +120,7 @@
                     <label for="description" class="form-label fw-semibold">
                         <span class="text-danger">Description</span>
                     </label>
-                    <input type="text" class="form-control  is-invalid " name="description" id="description"  value="{{ old('description') }}" required autofocus>
+                    <input type="text" class="form-control  " name="description" id="description"  value="{{ old('description') }}" >
                 </div>
 
                 <div class="mb-3">
