@@ -6,7 +6,32 @@
     background-color: rgb(239, 184, 24);
 }
 
+@font-face {
+    font-family: 'poppins';
+    src: url(../fonts/Poppins-Regular.ttf) format('truetype');
+}
 
+@font-face {
+    font-family: 'poppins2';
+    src: url(../fonts/Poppins-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'BebasNeue';
+    src: url(../fonts/BebasNeue-Regular.ttf) format('truetype');
+}
+
+.ff-poppins2{
+    font-family: poppins2, sans-serif;
+}
+
+.ff-poppins{
+    font-family: poppins, sans-serif;
+}
+
+.ff-bebas{
+    font-family: BebasNeue, sans-serif;
+}
 
 
 

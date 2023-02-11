@@ -53,7 +53,7 @@
                                             </li>
                                             @else
                                                 <li class="ms-4">
-                                                    <a href="{{route('categories.show', $subcategory->id)}}" class="btn btn-yellow border-0 col-7 text-start ">
+                                                    <a href="{{route('categories.admin.show', $subcategory->id)}}" class="btn btn-yellow border-0 col-7 text-start ">
                                                         <span class="text-capitalize">{{$subcategory->name}}</span>
                                                     </a>
                                                 </li>

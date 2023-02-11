@@ -11,6 +11,19 @@ use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
+
+    public function show($id){
+        $products = Product::where('category_id', $id)
+            ->paginate(15)
+            ->get();
+
+        return view('product.show')
+            ->with([
+                'products' => $products
+            ]);
+    }
+
+
 //    product create page
     public function create(){
         $categories = Category::orderBy('id')

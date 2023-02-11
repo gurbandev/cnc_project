@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="bg-light">
-@include('app.nav')
 <div class="container-xl">
+    @include('app.nav')
     <div class="row">
         @auth
         <div class="col-sm-12 col-md-4 col-lg-3">

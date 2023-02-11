@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use function PHPSTORM_META\type;
 
 class PageController extends Controller
 {
+
+    //    public function show($id){
+    //
+    //        $product = Product::find($id);
+    //
+    //        return view('')
+    //
+    //    }
+
     public function index(){
         $products = Product::orderBy('id', 'desc')
             ->take(6)
@@ -32,8 +42,21 @@ class PageController extends Controller
         return view('home.about');
     }
 
-    public function products(){
-        return view('home.products');
+    public function products($id){
+
+        if ($id == 0){
+            $id = null;
+        }
+
+        $categories = Category::where('parent_id', $id)
+            ->with('children')
+            ->get();
+
+
+        return view('home.products')
+            ->with([
+                'categories' => $categories,
+            ]);
     }
 
     public function filter(Request $request){

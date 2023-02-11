@@ -10,7 +10,7 @@
                     Categorya doretmek
                 </div>
 
-                <form action="{{ route('categories.update'), $obj->id }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('categories.update'), $old_category->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
 

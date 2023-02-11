@@ -48,7 +48,7 @@ Route::controller(PageController::class)
         Route::get('/search', 'search')->name('search');
         Route::get('/contact', 'contact')->name('contact');
         Route::get('/about', 'about')->name('about');
-        Route::get('/products', 'products')->name('products');
+        Route::get('/{id}/categories', 'products')->name('products')->where('id', '[0-9]+');
         Route::get('/filter', 'filter')->name('filter');
     });
 
@@ -77,6 +77,7 @@ Route::controller(CategoryController::class)
     ->name('categories.')
     ->prefix('/categories')
     ->group(function (){
+        Route::get('/{id}', 'bitShow')->name('bit.show')->where('id', '[0-9]+');
         Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]+');
         Route::middleware('auth')
             ->prefix('/auth')
