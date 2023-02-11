@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="bg-light">
-<div class="container-xl">
+<div class="container-sm">
     @include('app.nav')
     <div class="row">
         @auth
