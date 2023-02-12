@@ -1,0 +1,74 @@
+.line{
+    text-align: center;
+    border-bottom: 1px solid gray;
+    line-height: 0.1rem;
+    margin: 10px 0 20px;
+}
+
+.line-p{
+    /*background: rgb(248,249,250);*/
+    background: white;
+    padding: 0 10px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.icon {
+    padding-left: 25px;
+    /*background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat left;*/
+    background-size: 20px;
+}
+
+.h7{
+    font-size: 14px;
+}
+
+.img-resize{
+    height: 12rem;
+    object-fit: cover;
+    object-position: center, center;
+}
+
+.bg-footer{
+    background-color: #3d4150;
+}
+
+.bg-nav {
+    background-color: #3d4150;
+}
+
+.bg-img{
+    background: rgb(0,0,0,0.4) url("../img/about_us/about_us_1.jpg");
+    background-blend-mode: darken;
+}
+
+.bg-contact-img{
+    background: rgb(0,0,0,0.4) url("../img/contactbg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: darken;
+}
+
+.py-10 {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.space {
+    letter-spacing: length;
+}
+
+.color-dark {
+    color: #3d4150;
+}
+
+.px-10{
+    padding-left: 100px;
+    padding-right: 100px;
+}
