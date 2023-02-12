@@ -13,13 +13,16 @@ class ProductController extends Controller
 {
 
     public function show($id){
-        $products = Product::where('category_id', $id)
-            ->paginate(15)
-            ->get();
+
+        $category = Category::find($id);
+
+        $products = Product::where('category_id', $category->id)
+            ->paginate(16);
 
         return view('product.show')
             ->with([
-                'products' => $products
+                'products' => $products,
+                'category' => $category,
             ]);
     }
 

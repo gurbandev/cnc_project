@@ -1,6 +1,6 @@
-<div class="flex-shrink-0 p-3 bg-white text-capitalize">
+<div class="flex-shrink-0 p-3 bg-white text-capitalize pb-5 ">
     <h1 class="border-bottom pb-3 mb-3">Admin panel</h1>
-    <ul class="list-unstyled ps-0">
+    <ul class="list-unstyled ps-0 pb-5">
         <li class="mb-1">
             <button class="btn btn-yellow d-inline-flex align-items-center rounded border-0 collapsed col-12 px-4"
                     data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">

@@ -3,9 +3,9 @@
     Hakkymyzda
 @endsection
 @section('content')
-        <div style="height: 500px" class="bg-img h-auto text-white text-center text-uppercase fw-bold fs-1 py-10 rounded-3 ff-bebas"> About Us</div>
+        <div class="bg-img text-center display-5 py-10 rounded-3 "><span class="ff-bebas text-white">About Us</span></div>
         <div class="row pt-5 px-10">
-            <div class="col-6 text-end pe-5"><img src="{{asset("img/about_us.png")}}" alt=""></div>
+            <div class="col-6 text-end pe-5"><img src="{{asset("img/about_us/about_us_2.jpg")}}" alt=""></div>
             <div class="col-6">
 
                 <div class="text-warning text-uppercase fw-bold ff-poppins">What we Do</div>

@@ -1,7 +1,7 @@
 @auth
 
     <div class="my-3 border rounded-4 py-2">
-        <div>
+        <div class="mx-2">
             <img src="{{$product->image ? Storage::url('products/sm/' . $product->image) : Storage::url('not_found/not_found.png')}}" class="img-fluid rounded mx-auto d-block" alt="">
         </div>
         <div class="text-center">
@@ -32,8 +32,8 @@
 
     <a href="{{"products.show", $product->id}}" class="text-decoration-none text-dark">
         <div class="my-3 border rounded-4 py-2">
-            <div>
-                <img src="{{$product->image ? Storage::url('products/sm/' . $product->image) : Storage::url('not_found/not_found.png')}}" class="img-fluid rounded mx-auto d-block" alt="">
+            <div class="mx-2">
+                <img src="{{$product->image ? Storage::url('products/sm/' . $product->image) : Storage::url('not_found/not_found.png')}}" class="img-fluid rounded mx-auto d-block img-resize" alt="">
             </div>
             <div class="text-center">
                 {{$product->name}}

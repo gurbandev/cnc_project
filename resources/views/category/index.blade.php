@@ -26,8 +26,10 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->parent_id?:0}}</td>
                     <td class="col-1">
-                        <img src="{{$category->image ? Storage::url('categories/sm/' . $category->image) : Storage::url('not_found/not_found.png')}}"
-                             class="img-fluid" alt="">
+                        <div class="row justify-content-center">
+                            <img src="{{$category->image ? Storage::url('categories/sm/' . $category->image) : Storage::url('not_found/not_found.png')}}"
+                                 class="img-fluid img-category_index mx-auto" alt="">
+                        </div>
                     </td>
                     <td class="ps-5">
                         @if($category->parent_id)

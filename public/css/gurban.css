@@ -1,0 +1,25 @@
+.img-category_index{
+    height: 3rem;
+    object-fit: cover;
+    object-position: center, center;
+}
+.img-resize_home{
+    height: 12rem;
+    object-fit: cover;
+    object-position: center, center;
+}
+
+
+@media (max-width: 500px){
+    .img-resize_home{
+        height: 8rem;
+        object-fit: cover;
+        object-position: center, center;
+    }
+}
+
+.img-resize-category{
+    height: 15rem;
+    object-fit: cover;
+    object-position: center, center;
+}

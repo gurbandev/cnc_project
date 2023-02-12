@@ -129,7 +129,6 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'parent_id' => 'required|integer|min:1',
         ]);
 
         $obj = Category::findOrFail($id);
