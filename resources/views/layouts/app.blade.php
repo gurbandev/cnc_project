@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('css/font.css')}}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{asset('css/gurban.css')}}">
+    <link rel="stylesheet" href="{{asset('css/soyun.css')}}">
 </head>
 <body>
 <div class="container-sm">
