@@ -42,22 +42,6 @@ class PageController extends Controller
         return view('home.about');
     }
 
-    public function products($id){
-
-        if ($id == 0){
-            $id = null;
-        }
-
-        $categories = Category::where('parent_id', $id)
-            ->with('children')
-            ->get();
-
-
-        return view('home.products')
-            ->with([
-                'categories' => $categories,
-            ]);
-    }
 
     public function filter(Request $request){
 

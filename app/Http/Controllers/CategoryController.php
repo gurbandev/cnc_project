@@ -11,6 +11,24 @@ use Intervention\Image\Facades\Image;
 class CategoryController extends Controller
 {
 
+    public function show($id){
+
+        if ($id == 0){
+            $id = null;
+        }
+
+        $categories = Category::where('parent_id', $id)
+            ->with('children')
+            ->get();
+
+
+        return view('category.show')
+            ->with([
+                'categories' => $categories,
+            ]);
+    }
+
+
     public function index()
     {
         $categories = Category::with('parent')

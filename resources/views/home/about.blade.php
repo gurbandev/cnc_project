@@ -15,19 +15,19 @@
         </div>
         <div class="row pt-5 px-10">
             <div class="col-4">
-                <div class="text-center"><i class="fs-2 text-center text-warning bi bi-hand-thumbs-up-fill"></i></div>
+                <div class="text-center"><x-icon.thumbs/></div>
                 <h1 class="ff-bebas color-dark text-center fs-2 pt-2">Freight Calculation</h1>
                 <p class="ff-poppins color-dark text-center ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, sit?</p>
             </div>
 
             <div class="col-4">
-                <div class="text-center"><i class="fs-2 text-center text-warning bi bi-hand-thumbs-up-fill"></i></div>
+                <div class="text-center"><x-icon.bit/></div>
                 <h1 class="ff-bebas color-dark text-center fs-2 pt-2">Freight Calculation</h1>
                 <p class="ff-poppins color-dark text-center ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, sit?</p>
             </div>
 
             <div class="col-4">
-                <div class="text-center"><i class="fs-2 text-center text-warning bi bi-hand-thumbs-up-fill"></i></div>
+                <div class="text-center"><x-icon.quatation/></div>
                 <h1 class="ff-bebas color-dark text-center fs-2 pt-2">Freight Calculation</h1>
                 <p class="ff-poppins color-dark text-center ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, sit?</p>
             </div>

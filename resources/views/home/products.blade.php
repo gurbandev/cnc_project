@@ -9,7 +9,7 @@
         <div class="row row-cols-sm-2 row-cols-md-3 justify-content-around pt-4 px-3 px-sm-0 text-dark">
             @foreach($categories as $category)
                 @if(count($category->children))
-                    <a class="text-decoration-none col" href="{{ route('products', $category->id) }}">
+                    <a class="text-decoration-none col" href="{{ route('categories', $category->id) }}">
                         <div class="mx-2 mt-4 text-dark text-center">
                             <img src="{{$category->image ? Storage::url('categories/' . $category->image) : Storage::url('not_found/not_found.png')}}"
                                  class="border rounded col-12 img-resize-category" alt="">
@@ -21,7 +21,7 @@
                         <div class="mx-2 mt-4 text-dark text-center">
                             <img src="{{$category->image ? Storage::url('categories/' . $category->image) : Storage::url('not_found/not_found.png')}}"
                                  class="border rounded col-12 img-resize-category" alt="">
-                            <p class="fs-vw pt-3 ff-poppins2">{{$category->name}}</p>
+                            <p class="fs-vw pt-3 ff-poppins2 text-uppercase">{{$category->name}}</p>
                         </div>
                     </a>
                 @endif

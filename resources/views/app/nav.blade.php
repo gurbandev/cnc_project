@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-nav mb-4 rounded-2 px-md-3 px-lg-5 px-3 py-0 py-3 mt-2 text-center" aria-label="navbar">
     <div class="col-3 col-md-1-5">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <x-logo/>
+            <x-icon.logo/>
         </a>
     </div>
-    <form class="d-flex ms-auto me-lg-4 order-md-2 col-6 col-md-4 px-0 px-sm-3" role="search" action="{{route('filter')}}">
-        <input class="form-control me-2 me-sm-0 bg-dark text-white bg-icon" type="search" name="q"
-               value="{{request()->get('q')}}" placeholder="Gözle" aria-label="Search">
+    <form class="d-flex ms-auto me-lg-4 order-md-2 col-6 col-md-4 px-0 px-sm-3 position-relative" role="search" action="{{route('filter')}}">
+        <input class="form-control me-2 me-sm-0 bg-dark text-white bg-icon" type="search" name="q" value="{{request()->get('q')}}" placeholder="Gözle" aria-label="Search">
+        <x-icon.search/>
     </form>
     <button class="navbar-toggler col-2 col-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbars"
             aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
                         <a class="nav-link fw-semibold h4" href="{{route('contact')}}">Contact</a>
                     </li>
                     <li class="nav-item col-lg-3 col-md-2-5 px-md-0 px-lg-2">
-                        <a class="nav-link fw-semibold h4" href="{{route('products', 0)}}">Products</a>
+                        <a class="nav-link fw-semibold h4" href="{{route('categories.show', 0)}}">Products</a>
                     </li>
                     <li class="nav-item col-lg-3 col-md-2-5 px-md-0 px-lg-2">
                         <a class="nav-link fw-semibold h4" href="{{route('about')}}">About us</a>

@@ -13,8 +13,12 @@ class ProductController extends Controller
 {
 
     public function show($id){
+        if ($id){
+            $category = Category::find($id);
 
-        $category = Category::find($id);
+            $products = Product::where('category_id', $category->id)
+                ->paginate(16);
+        }
 
         $products = Product::where('category_id', $category->id)
             ->paginate(16);

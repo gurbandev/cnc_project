@@ -48,13 +48,9 @@ Route::controller(PageController::class)
         Route::get('/search', 'search')->name('search');
         Route::get('/contact', 'contact')->name('contact');
         Route::get('/about', 'about')->name('about');
-        Route::get('/{id}/categories', 'products')->name('products')->where('id', '[0-9]+');
         Route::get('/filter', 'filter')->name('filter');
     });
 
-
-
-//Route::get('/', [CategoryController::class, 'index'])->name('home');
 
 
 Route::controller(ProductController::class)
@@ -62,6 +58,7 @@ Route::controller(ProductController::class)
     ->name('products.')
     ->group(function(){
        Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]+');
+       Route::get('/{id}/in_show', 'in_show')->name('in_show')->where('id', '[0-9]+');
        Route::middleware('auth')
            ->prefix('/auth')
            ->group(function (){
@@ -77,7 +74,6 @@ Route::controller(CategoryController::class)
     ->name('categories.')
     ->prefix('/categories')
     ->group(function (){
-        Route::get('/{id}', 'bitShow')->name('bit.show')->where('id', '[0-9]+');
         Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]+');
         Route::middleware('auth')
             ->prefix('/auth')
@@ -112,12 +108,16 @@ Route::controller(MachineController::class)
     });
 
 Route::controller(BitController::class)
-    ->middleware('auth')
     ->name('bits.')
     ->prefix('/bits')
     ->group(function (){
-        Route::get('/create', 'create')->name('create');
-        Route::post('', 'store')->name('store');
-        Route::get('/{id}/edit', 'edit')->name('edit')->where('id', '[0-9]+');
-        Route::put('/{id}', 'update')->name('update')->where('id', '[0-9]+');
+        Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]+');
+        Route::middleware('auth')
+            ->group(function (){
+                Route::get('/create', 'create')->name('create');
+                Route::post('', 'store')->name('store');
+                Route::get('/{id}/edit', 'edit')->name('edit')->where('id', '[0-9]+');
+                Route::put('/{id}', 'update')->name('update')->where('id', '[0-9]+');
+            });
     });
+

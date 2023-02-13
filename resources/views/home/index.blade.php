@@ -3,6 +3,7 @@
     CNC
 @endsection
 @section('content')
+
     <div id="carouselExampleAutoplaying" class="carousel slide rounded" data-bs-ride="carousel" style="overflow: hidden">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -77,9 +78,6 @@
                 <img src="{{asset('img/img_arden/arden4.jpg')}}" class="rounded round img-fluid " alt="...">
             </div>
         </div>
-    </div>
-    <div class="container">
-        <a class="btn btn-warning text-dark float-end" href="#"><i class="bi-arrow-up"></i></a>
     </div>
 @endsection
 

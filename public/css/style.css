@@ -29,7 +29,7 @@
 }
 
 .img-resize{
-    height: 12rem;
+    height: 10rem;
     object-fit: cover;
     object-position: center, center;
 }
