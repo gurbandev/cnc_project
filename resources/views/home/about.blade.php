@@ -4,9 +4,9 @@
 @endsection
 @section('content')
         <div class="bg-img text-center display-5 py-10 rounded-3 "><span class="ff-bebas text-white">About Us</span></div>
-        <div class="row pt-5 px-10">
-            <div class="col-6 text-end pe-5"><img src="{{asset("img/about_us/about_us_2.jpg")}}" alt=""></div>
-            <div class="col-6">
+        <div class="row pt-5">
+            <div class="col-6 pe-5"><img src="{{asset("img/about_us/about_us_2.jpg")}}" alt=""></div>
+            <div class="col col-lg-6">
 
                 <div class="text-warning text-uppercase fw-bold ff-poppins">What we Do</div>
                 <div class="fs-2 text-uppercase fw-bold ff-bebas color-dark lh-2 pt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, temporibus?</div>
