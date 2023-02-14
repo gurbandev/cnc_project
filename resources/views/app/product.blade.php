@@ -2,7 +2,7 @@
 
     <div class="my-3 border rounded-4 py-2">
         <div class="mx-2">
-            <img src="{{$product->image ? Storage::url('products/sm/' . $product->image) : Storage::url('not_found/not_found.png')}}" class="img-fluid rounded mx-auto d-block" alt="">
+            <img src="{{$product->image ? Storage::url('products/sm/' . $product->image) : Storage::url('not_found/not_found.png')}}" class="img-fluid rounded mx-auto d-block img-resize" alt="">
         </div>
         <div class="text-center">
             {{$product->name}}

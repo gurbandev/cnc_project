@@ -122,8 +122,7 @@ class CategoryController extends Controller
             $obj->update();
         }
 
-        return redirect()->back()
-            ->with('success create product');
+        return redirect(route('categories.index'));
     }
 
 

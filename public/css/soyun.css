@@ -44,20 +44,24 @@
 
 .bg-img{
     background: rgb(0,0,0,0.4) url("../img/about_us/about_us_1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     background-blend-mode: darken;
 }
 
 .bg-contact-img{
-    background: rgb(0,0,0,0.4) url("../img/contactbg.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-blend-mode: darken;
-}
+     background: rgb(0,0,0,0.4) url("../img/img_arden/contactbg.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     background-blend-mode: darken;
+ }
+
 
 .py-10 {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 12%;
+    padding-bottom: 12%;
 }
 
 .space {

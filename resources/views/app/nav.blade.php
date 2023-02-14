@@ -4,11 +4,13 @@
             <x-icon.logo/>
         </a>
     </div>
-    <form class="d-flex ms-auto me-lg-4 order-md-2 col-6 col-md-4 px-0 px-sm-3 position-relative" role="search" action="{{route('filter')}}">
-        <input class="form-control me-2 me-sm-0 bg-dark text-white bg-icon" type="search" name="q" value="{{request()->get('q')}}" placeholder="Gözle" aria-label="Search">
-        <x-icon.search/>
+    <form class="d-flex ms-auto me-2 me-lg-4 order-md-2 col-6 col-md-4 px-0 px-sm-3 position-relative row" role="search" action="{{route('filter')}}">
+        <input class="form-control me-2 me-sm-0 bg-dark border-0 text-white bg-icon" type="search" name="q" value="{{request()->get('q')}}" placeholder="Gözle" aria-label="Search">
+        <div class="position-absolute text-end col-10">
+            <x-icon.search/>
+        </div>
     </form>
-    <button class="navbar-toggler col-2 col-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbars"
+    <button class="navbar-toggler col-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbars"
             aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

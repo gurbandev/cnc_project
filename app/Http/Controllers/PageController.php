@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use function PHPSTORM_META\type;
+use function Symfony\Component\Console\Style\success;
 
 class PageController extends Controller
 {
@@ -55,9 +56,17 @@ class PageController extends Controller
         });
         $products = $products->get();
 
+        $success = null;
+
+
+        if (isset($products[0])){
+            $success = true;
+        }
+
         return view('home.filter')
             ->with([
-                'products' => $products
+                'products' => $products,
+                'success' => $success,
             ]);
     }
 }

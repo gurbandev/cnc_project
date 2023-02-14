@@ -20,7 +20,7 @@
                         </label>
                         <select class="form-select @error('parent_id') is-invalid @enderror" name="parent_id" id="parent_id" required autofocus>
                         @foreach($categories as $category)
-                                <option value="{{ $category->parent_id }}">{{ \App\Http\Controllers\CategoryController::getCategoryTree($category, $category->name) }}</option>
+                                <option value="{{ $category->id }}">{{ \App\Http\Controllers\CategoryController::getCategoryTree($category, $category->name) }}</option>
                             @endforeach
                         </select>
                         @error('parent_id')
