@@ -32,13 +32,13 @@
         </button>
     </div>
     <div class="px-md-3 px-lg-5">
-        <div class="text-center row justify-content-center mt-5 pt-5">
+        <div class="text-center row justify-content-center mt-5 pt-lg-5">
             <h1 class="mb-0 ff-bebas">OUR PRODUCTS</h1>
             <p class="line col-6 col-sm-3"><span class="line-p ff-poppins2 fs-vw">latest products</span></p>
         </div>
         <div class="row justify-content-around pt-4 px-0">
             @foreach($products as $product)
-                <div class="col-6 col-lg-4" >
+                <div class="col-6 col-lg-4 mt-2">
                     <div class="col-12 border rounded text-center mx-0 mt-4 ms-0">
                         <div class="mx-auto px-0">
                             <div class="mx-auto mt-2 mt-md-3 col-11 col-md-10">
@@ -52,9 +52,7 @@
             @endforeach
         </div>
         <div class="text-center pt-3">
-            <div>
-                <button type="button" class="btn btn-warning py-2 mt-3 ff-poppins2"><b class="px-5">Show all</b></button>
-            </div>
+            <a class="btn btn-warning py-2 mt-3 ff-poppins2" href="{{route('products.lastes')}}"><b class="px-5">Show all</b></a>
         </div>
         <div class="text-center row justify-content-center mt-5 pt-5" id="catalog">
             <h1 class="mb-0 ff-bebas">CATALOGS</h1>

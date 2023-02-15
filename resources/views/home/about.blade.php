@@ -5,10 +5,10 @@
 @section('content')
         <div class="bg-img text-center display-5 py-10 rounded-3 "><span class="ff-bebas text-white">About Us</span></div>
         <div class="col-12 col-md-10 px-2">
-            <div class="row pt-5">
+            <div class="row pt-4 pt-lg-5">
                 <div class="col-12 col-lg-6 pe-0 pe-md-5 text-center text-md-start text-lg-end"><img class="img-fluid" src="{{asset("img/about_us/about_us_2.jpg")}}" alt=""></div>
                 <div class="col-12 col-lg-6 pt-2 pt-md-0">
-                    <div class="text-warning text-uppercase fw-bold ff-poppins pt-4 pt-lg-0">What we Do</div>
+                    <div class="text-warning text-uppercase fw-bold ff-poppins pt-1 pt-lg-0">What we Do</div>
                     <div class="fs-2 text-uppercase fw-bold ff-bebas color-dark lh-2 pt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, temporibus?</div>
                     <p class="ff-poppins pt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut blanditiis, consequatur culpa deserunt dignissimos dolorum eos error ex fugit incidunt itaque iusto modi molestias nam praesentium quasi quod repellat sed sequi temporibus ullam vel veniam? Accusamus alias corporis dolor ea earum excepturi ipsa nam necessitatibus nostrum numquam pariatur quasi reprehenderit rerum, saepe velit, voluptas voluptate. Dicta ex excepturi facilis maiores. Amet asperiores aspernatur consectetur dolorum ducimus eius et eveniet exercitationem, harum iure iusto nihil quibusdam quis quod, sapiente vel?</p>
                 </div>

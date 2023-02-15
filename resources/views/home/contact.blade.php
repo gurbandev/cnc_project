@@ -10,19 +10,19 @@
                 <div class="col-12 col-lg-6 pe-lg-5 ff-poppins text-gray mb-5 mb-lg-0">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label pt-2">Your Name</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control py-2-5" id="exampleFormControlInput1" placeholder="">
 
                             <label for="exampleFormControlInput1" class="form-label pt-3">Your Email</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="email" class="form-control py-2-5" id="exampleFormControlInput1" placeholder="">
 
                             <label for="exampleFormControlInput1" class="form-label pt-3">Subject</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control py-2-5" id="exampleFormControlInput1" placeholder="">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label pt-3">Message</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                            <textarea class="form-control py-2-5" id="exampleFormControlTextarea1" rows="5"></textarea>
                         </div>
-                        <button type="submit" class="btn border-0 btn-warning d-block ff-poppins fw-bold w-100">Submit</button>
+                        <button type="submit" class="btn border-0 btn-warning d-block ff-poppins fw-bold w-100 py-2-5">Submit</button>
                 </div>
                 <div class="col-12 col-lg-6 mt-5 mt-sm-0 ">
                     <div class="h-100 rounded-3">

@@ -57,8 +57,9 @@ Route::controller(ProductController::class)
     ->prefix('/products')
     ->name('products.')
     ->group(function(){
+       Route::get('/lastes', 'lastes')->name('lastes');
        Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]+');
-       Route::get('/{id}/in_show', 'in_show')->name('in_show')->where('id', '[0-9]+');
+       Route::get('/{id}/show', 'inShow')->name('inShow')->where('id', '[0-9]+');
        Route::middleware('auth')
            ->prefix('/auth')
            ->group(function (){

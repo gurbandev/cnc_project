@@ -45,36 +45,16 @@ class CategoryController extends Controller
 
     public function adminShow($id)
     {
-        $category = Category::where('id', $id)
-            ->get();
+        $category = Category::find($id);
 
-        $category = $category[0];
+//        $category = $category[0];
 
         $products = Product::where('category_id', $id)
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(12);
 
 
         return view('category.admin_show')
-            ->with([
-                'category' => $category,
-                'products' => $products,
-            ]);
-    }
-
-    public function bitShow($id){
-
-        $category = Category::where('id', $id)
-            ->get();
-
-        $category = $category[0];
-
-        $products = Product::where('category_id', $id)
-            ->orderBy('id', 'desc')
-            ->get();
-
-
-        return view('category.show')
             ->with([
                 'category' => $category,
                 'products' => $products,

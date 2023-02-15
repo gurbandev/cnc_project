@@ -1,4 +1,4 @@
-<div class="flex-shrink-0 p-3 bg-white text-capitalize pb-5 ">
+<div class="flex-shrink-0 p-3 bg-white text-capitalize pb-5 mb-3 ">
     <h1 class="border-bottom pb-3 mb-3">Admin panel</h1>
     <ul class="list-unstyled ps-0 pb-5">
         <li class="mb-1">

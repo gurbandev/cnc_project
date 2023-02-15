@@ -11,17 +11,9 @@ use function Symfony\Component\Console\Style\success;
 class PageController extends Controller
 {
 
-    //    public function show($id){
-    //
-    //        $product = Product::find($id);
-    //
-    //        return view('')
-    //
-    //    }
-
     public function index(){
         $products = Product::orderBy('id', 'desc')
-            ->take(6)
+            ->take(9)
             ->get();
 
         $categories = Category::orderBy('id')
@@ -54,10 +46,18 @@ class PageController extends Controller
              $query->orWhere('barcode', 'like', '%'.$q.'%');
            });
         });
-        $products = $products->get();
+        $products = $products
+            ->with('category')
+            ->get();
 
         $success = null;
 
+        foreach ($products as $product)
+
+
+        $category = $products['category'];
+
+        return $category;
 
         if (isset($products[0])){
             $success = true;

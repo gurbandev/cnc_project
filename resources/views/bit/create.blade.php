@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="text-center px-5 mt-5 col-6">
+        <div class="text-center px-5 mt-5 col-12 col-md-6">
             <h3>Pycak gosmak</h3>
             <hr>
             <form action="{{ route('bits.store') }}" method="post" enctype="multipart/form-data">
@@ -151,7 +151,7 @@
                 </button>
             </form>
         </div>
-        <div class="col-6 mt-5 px-5 py-5">
+        <div class="col-12 col-md-6 mt-lg-5 px-5 py-lg-5 pb-5">
             <div class="border">
                 <img class="img-fluid mx-auto d-block" src="{{asset('img/example/example.jpg')}}" alt="">
                 <h4 class="text-center mt-2">Meselem</h4>

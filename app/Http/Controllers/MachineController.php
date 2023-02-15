@@ -62,7 +62,7 @@ class MachineController extends Controller
             Storage::putFileAs('public/products', $request->image, $name);
             // save small
             $imageSm = Image::make($request->image);
-            $imageSm->resize(200, 200, function ($constraint) {
+            $imageSm->resize(350, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imageSm = (string)$imageSm->encode('jpg', 90);
@@ -136,7 +136,7 @@ class MachineController extends Controller
             Storage::putFileAs('public/products', $request->image, $name);
             // save small
             $imageSm = Image::make($request->image);
-            $imageSm->resize(200, 200, function ($constraint) {
+            $imageSm->resize(350, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imageSm = (string)$imageSm->encode('jpg', 90);

@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="text-center px-5 mt-5 col-6">
+        <div class="text-center px-0 px-md-5 mt-5 col-8 col-md-5">
             <h3 class="text-capitalize">pycak edit</h3>
             <hr>
             <form action="{{ route('bits.update', $obj->id) }}" method="post" enctype="multipart/form-data">

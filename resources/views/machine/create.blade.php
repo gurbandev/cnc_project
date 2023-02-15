@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="text-center px-5 mt-5 col-6">
+        <div class="text-center px-0 px-md-5 mt-5 col-8 col-md-6">
             <h3>Stanok gosmak</h3>
             <hr>
             <form action="{{ route('machines.store') }}" method="post" enctype="multipart/form-data">

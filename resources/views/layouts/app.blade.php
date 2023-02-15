@@ -28,7 +28,7 @@
             @yield('content')
         </div>
             <div class="container">
-                <a class="btn btn-warning text-dark float-end me-4" href="#"><x-icon.arrow_up/></a>
+                <a class="btn btn-warning text-dark float-end me-4 rounded-3 py-2" href="#"><x-icon.arrow_up/></a>
             </div>
     </div>
     <div>

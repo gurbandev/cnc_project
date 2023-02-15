@@ -12,8 +12,24 @@ use Intervention\Image\Facades\Image;
 class BitController extends Controller
 {
 
+    public function show($id)
+    {
+
+        $category = Category::find($id);
+
+        $products = Product::where('category_id', $category->id)
+            ->get();
+
+        return view('bit.in_show')
+            ->with([
+                'products' => $products,
+                'category' => $category,
+            ]);
+    }
+
 //    create page
-    public function create(){
+    public function create()
+    {
         $categories = Category::orderBy('id')
             ->get();
 
@@ -29,7 +45,8 @@ class BitController extends Controller
 
 
 //    store creating
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -66,7 +83,7 @@ class BitController extends Controller
             Storage::putFileAs('public/products', $request->image, $name);
             // save small
             $imageSm = Image::make($request->image);
-            $imageSm->resize(200, null, function ($constraint) {
+            $imageSm->resize(350, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imageSm = (string)$imageSm->encode('jpg', 90);
@@ -81,7 +98,8 @@ class BitController extends Controller
 
 
 //    edit page
-    public function edit($id){
+    public function edit($id)
+    {
         $obj = Product::findOrFail($id);
 
 //        return $obj;
@@ -143,7 +161,7 @@ class BitController extends Controller
             Storage::putFileAs('public/products', $request->image, $name);
             // save small
             $imageSm = Image::make($request->image);
-            $imageSm->resize(200, null, function ($constraint) {
+            $imageSm->resize(350, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imageSm = (string)$imageSm->encode('jpg', 90);

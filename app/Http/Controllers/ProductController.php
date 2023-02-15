@@ -12,13 +12,25 @@ use Intervention\Image\Facades\Image;
 class ProductController extends Controller
 {
 
-    public function show($id){
-        if ($id){
-            $category = Category::find($id);
+    public function inShow($id)
+    {
 
-            $products = Product::where('category_id', $category->id)
-                ->paginate(16);
-        }
+        $category = Category::find($id);
+
+        $products = Product::where('category_id', $category->id)
+            ->get();
+
+        return view('product.in_show')
+            ->with([
+                'products' => $products,
+                'category' => $category,
+            ]);
+    }
+
+
+    public function show($id){
+
+        $category = Category::find($id);
 
         $products = Product::where('category_id', $category->id)
             ->paginate(16);
@@ -27,6 +39,17 @@ class ProductController extends Controller
             ->with([
                 'products' => $products,
                 'category' => $category,
+            ]);
+    }
+
+    public function lastes(){
+        $products = Product::OrderBy('id', 'desc')
+            ->take(20)
+            ->get();
+
+        return view('product.lastes')
+            ->with([
+                'products' => $products
             ]);
     }
 
@@ -80,7 +103,7 @@ class ProductController extends Controller
             Storage::putFileAs('public/products', $request->image, $name);
             // save small
             $imageSm = Image::make($request->image);
-            $imageSm->resize(200, null, function ($constraint) {
+            $imageSm->resize(350, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imageSm = (string)$imageSm->encode('jpg', 90);
@@ -164,7 +187,7 @@ class ProductController extends Controller
             Storage::putFileAs('public/products', $request->image, $name);
             // save small
             $imageSm = Image::make($request->image);
-            $imageSm->resize(200, null, function ($constraint) {
+            $imageSm->resize(350, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imageSm = (string)$imageSm->encode('jpg', 90);

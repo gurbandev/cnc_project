@@ -1,0 +1,1 @@
+bits show {{$category->name}}

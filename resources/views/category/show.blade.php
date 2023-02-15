@@ -18,7 +18,11 @@
                         </div>
                     </a>
                 @else
-                    <a class="text-decoration-none mt-md-4" href="{{ route('products.show', $category->id) }}">
+                    @if(\App\Http\Controllers\CategoryController::getCategoryId($category->id) == 2)
+                        <a class="text-decoration-none mt-md-4" href="{{route("bits.show", $category->id)}}">
+                    @else
+                        <a class="text-decoration-none mt-md-4" href="{{route('products.show', $category->id)}}">
+                    @endif
                         <div class="mx-2 mt-4 text-dark text-center">
                             <img src="{{$category->image ? Storage::url('categories/' . $category->image) : Storage::url('not_found/not_found.png')}}"
                                  class="border rounded col-12 img-resize-category" alt="">

@@ -11,13 +11,13 @@
             <span class="text-decoration-underline text-primary" style="cursor: default;">{{$category->name}}</span>
         </div>
         <hr>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        <div class="row">
             @foreach($products as $product)
-                <div class="col">
+                <div class="col-6 col-lg-3">
                     @include('app.product')
                 </div>
             @endforeach
         </div>
-{{--        {{ $products->links() }}--}}
+        {{ $products->links() }}
     </div>
 @endsection
