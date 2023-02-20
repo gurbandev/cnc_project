@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attribute;
 use App\Models\AttributeValue;
 use App\Models\Category;
 use App\Models\Product;
@@ -198,5 +199,17 @@ class ProductController extends Controller
 
             return redirect()->back();
         }
+    }
+
+    public static function getAttribute($attribute_id){
+        $attribute = AttributeValue::find($attribute_id);
+
+        $value = '-';
+
+        if (isset($attribute->name)){
+            $value = $attribute->name;
+        }
+
+        return $value;
     }
 }

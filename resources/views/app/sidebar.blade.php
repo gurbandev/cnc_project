@@ -90,5 +90,8 @@
         <li>
             <a href="{{route('categories.index')}}" class="btn btn-yellow border-0 fw-semibold fs-5 px-4 col-12 text-start">Category edit</a>
         </li>
+        <li>
+            <a href="{{route('contacts.show')}}" class="btn btn-yellow border-0 px-4 fs-5 fw-semibold col-12 text-start">SMS</a>
+        </li>
     </ul>
 </div>

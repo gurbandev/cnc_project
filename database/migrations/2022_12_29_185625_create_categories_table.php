@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('parent_id')->index()->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->string('name');
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
         });
     }

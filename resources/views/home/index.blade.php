@@ -38,7 +38,8 @@
         </div>
         <div class="row justify-content-around pt-4 px-0">
             @foreach($products as $product)
-                <div class="col-6 col-lg-4 mt-2">
+                <a href="{{\App\Http\Controllers\CategoryController::getCategoryId($product->category_id) == 2 ? route("bits.show", $product->category_id): route('products.inShow', $product->category_id)}}" class="col-6 col-md-4 text-decoration-none text-dark">
+                <div class="mt-2">
                     <div class="col-12 border rounded text-center mx-0 mt-4 ms-0">
                         <div class="mx-auto px-0">
                             <div class="mx-auto mt-2 mt-md-3 col-11 col-md-10">
@@ -49,6 +50,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
             @endforeach
         </div>
         <div class="text-center pt-3">

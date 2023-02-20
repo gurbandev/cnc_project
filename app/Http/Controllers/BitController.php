@@ -17,13 +17,19 @@ class BitController extends Controller
 
         $category = Category::find($id);
 
-        $products = Product::where('category_id', $category->id)
+        $ourcategories = Category::where('parent_id', $category->parent_id)
             ->get();
+
+        $products = Product::where('category_id', $category->id)
+            ->orderBy('id', 'desc')
+            ->get();
+
 
         return view('bit.in_show')
             ->with([
                 'products' => $products,
                 'category' => $category,
+                'ourcategories' => $ourcategories,
             ]);
     }
 
@@ -47,6 +53,8 @@ class BitController extends Controller
 //    store creating
     public function store(Request $request)
     {
+
+        return $request;
 
         $request->validate([
             'name' => 'required|string|max:255',

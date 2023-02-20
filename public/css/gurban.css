@@ -57,3 +57,69 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .py-2-5{padding-top:.7rem!important;padding-bottom:.7rem!important}
+
+.img-resize-in_show{
+    height: 20rem;
+    object-fit: cover;
+    object-position: center, center;
+}
+
+.img-resize-min{
+    height: 3.5rem;
+    width: 3.5rem;
+    object-fit: cover;
+    object-position: center, center;
+}
+
+.img-resize-modalShow{
+    height: 20rem;
+    object-fit: cover;
+    object-position: center, center;
+}
+
+@media (max-width: 550px) {
+    .img-resize-modalShow{
+        height: 10rem;
+        object-fit: cover;
+        object-position: center, center;
+    }
+}
+
+.modal-center{
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.bg-table{
+    background: rgba(239, 184, 24, 0.16);
+}
+
+.text-style{
+    color: #3D4150;
+}
+
+.font-small{
+    font-size: 17px;!important;
+}
+
+@media (max-width: 500px) {
+    .font-small{
+        font-size: 13px;!important;
+    }
+}
+
+@media (max-width: 390px) {
+    .font-small{
+        font-size: 11px;!important;
+    }
+}
+
+@media (max-width: 320px) {
+    .font-small{
+        font-size: 9px;!important;
+    }
+}
+
+body{
+    color: #3D4150;
+}

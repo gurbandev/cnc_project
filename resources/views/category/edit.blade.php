@@ -27,7 +27,7 @@
 
                     <div class="mb-3">
                         <label for="image" class="form-label fw-semibold">
-                            Surat 
+                            Surat uytgetmek
                         </label>
                         <div>
                             <img src="{{$old_category->image ? Storage::url('products/sm/' . $old_category->image) : Storage::url('not_found/not_found.png')}}"

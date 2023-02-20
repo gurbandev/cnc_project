@@ -130,7 +130,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label fw-semibold">
-                        Surat gosmak
+                        Surat uytgetmek
                     </label>
                     <input type="file" accept="image/jpeg" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
                 </div>

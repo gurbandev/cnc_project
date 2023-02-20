@@ -52,12 +52,6 @@ class PageController extends Controller
 
         $success = null;
 
-        foreach ($products as $product)
-
-
-        $category = $products['category'];
-
-        return $category;
 
         if (isset($products[0])){
             $success = true;
